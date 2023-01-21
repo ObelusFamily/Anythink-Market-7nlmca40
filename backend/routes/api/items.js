@@ -150,12 +150,16 @@ router.post("/", auth.required, async (req, res, next) => {
       item.seller = user;
 
       if (!item.image) {
-        const response = await openai.createImage({
-          prompt: item.title,
-          n: 1,
-          size: "256x256",
-        });
-        item.image = response.data.data[0].url;
+        try {
+          const response = await openai.createImage({
+            prompt: item.title,
+            n: 1,
+            size: "256x256",
+          });
+          item.image = response.data.data[0].url;
+        } catch (err) {
+          console.error(err)
+        }
       }
 
       return item.save().then(function() {

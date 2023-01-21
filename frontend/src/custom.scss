@@ -57,5 +57,7 @@ body {
 }
 
 .user-info {
-  min-width: 800px;
+  @media (min-width : 400px) {
+    min-width: 800px;
+  }
 }

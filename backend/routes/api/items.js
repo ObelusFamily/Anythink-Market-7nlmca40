@@ -145,7 +145,7 @@ router.post("/", auth.required, async (req, res, next) => {
         return res.sendStatus(401);
       }
 
-      var item = new Item(req.body.item);
+      const item = new Item(req.body.item);
 
       item.seller = user;
 

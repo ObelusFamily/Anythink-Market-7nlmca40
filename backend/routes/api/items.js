@@ -162,7 +162,7 @@ router.post("/", auth.required, async (req, res, next) => {
         }
       }
 
-      return item.save().then(function() {
+      await item.save().then(function() {
         sendEvent('item_created', { item: req.body.item })
         return res.json({ item: item.toJSONFor(user) });
       });

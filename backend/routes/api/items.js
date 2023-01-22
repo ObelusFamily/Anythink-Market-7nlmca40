@@ -148,7 +148,7 @@ router.post("/", auth.required, async (req, res, next) => {
       const item = new Item(req.body.item);
 
       item.seller = user;
-
+      console.log(item)
       if (!item.image) {
         try {
           const response = await openai.createImage({
